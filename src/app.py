@@ -45,6 +45,9 @@ new_image = cv.bitwise_and(image , image, mask=mask)
 (bottomx, bottomy) = (np.max(x), np.max(y))
 cropped = gray_scaled_image[topx:bottomx+1, topy:bottomy+1]
 
+text = pytesseract.image_to_string(cropped, config='--psm 11')
+print("Detected Number is:", text)
+
 cv.imshow('Image', cropped)
 cv.waitKey(0)
 cv.destroyAllWindows()
